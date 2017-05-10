@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <include layout="@layout/title" />
+
+    <Button
+        android:id="@+id/firstButton_1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="重置 progressBar"
+        android:onClick="onBtnClick"
+        />
+
+    <Button
+        android:id="@+id/firstButton_2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="progress ++"
+        android:onClick="onBtnClick"
+        />
+
+    <Button
+        android:id="@+id/firstButton_3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="change"
+        android:onClick="onBtnClick"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Hello World!"
+        />
+
+    <EditText
+        android:id="@+id/first_editText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="点击这里输入你的名字"
+        android:maxLines="2"
+        />
+
+    <ImageView
+        android:id="@+id/first_imageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/result_right"
+        />
+
+    <ProgressBar
+        android:id="@+id/first_progressBar"
+        android:layout_width="match_parent"
+        android:layout_height="20pt"
+        style="?android:attr/progressBarStyleHorizontal"
+        />
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="40dp">
+        <Button
+            android:id="@+id/nextButton_relative"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="相对布局"
+            android:onClick="onBtnClick"
+            />
+        <Button
+            android:id="@+id/nextButton_frame"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="帧布局"
+            android:onClick="onBtnClick"
+            />
+        <Button
+            android:id="@+id/nextButton_percent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="百分比布局"
+            android:onClick="onBtnClick"
+            />
+    </LinearLayout>
+
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="40dp">
+        <Button
+            android:id="@+id/firstButton_custom"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="自定义控件"
+            android:onClick="onBtnClick"
+            />
+        <Button
+            android:id="@+id/firstButton_recyclerView"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="RecyclerView"
+            android:onClick="onBtnClick"
+            />
+    </LinearLayout>
+
+</LinearLayout>
