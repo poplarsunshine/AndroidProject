@@ -20,7 +20,8 @@
         <activity android:name=".FrameActivity" />
         <activity android:name=".PercentActivity" />
         <activity android:name=".CustomActivity" />
-        <activity android:name=".RecyclerActivity"></activity>
+        <activity android:name=".RecyclerActivity" />
+        <activity android:name=".ChatView.ChatActivity"></activity>
     </application>
 
 </manifest>

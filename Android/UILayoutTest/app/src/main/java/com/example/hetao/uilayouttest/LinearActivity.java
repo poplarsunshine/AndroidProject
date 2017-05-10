@@ -14,6 +14,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import static java.lang.Thread.sleep;
+
+import com.example.hetao.uilayouttest.ChatView.ChatActivity;
 import com.example.hetao.uilayouttest.RecyclerActivity;
 
 public class LinearActivity extends AppCompatActivity {
@@ -118,6 +120,12 @@ public class LinearActivity extends AppCompatActivity {
             case R.id.firstButton_recyclerView:
             {
                 Intent intent = new Intent(LinearActivity.this, RecyclerActivity.class);
+                startActivity(intent);
+            }
+            break;
+            case R.id.firstButton_chat:
+            {
+                Intent intent = new Intent(LinearActivity.this, ChatActivity.class);
                 startActivity(intent);
             }
             break;

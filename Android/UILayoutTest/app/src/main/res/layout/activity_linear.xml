@@ -104,6 +104,14 @@
             android:text="RecyclerView"
             android:onClick="onBtnClick"
             />
+        <Button
+            android:id="@+id/firstButton_chat"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="聊天"
+            android:onClick="onBtnClick"
+            />
+
     </LinearLayout>
 
 </LinearLayout>
