@@ -5,6 +5,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.TextView;
 
+import java.util.List;
+
+import static java.lang.String.valueOf;
+
 public class CustomActivity extends AppCompatActivity {
 
     @Override
