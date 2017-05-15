@@ -28,6 +28,35 @@
         android:onClick="onBtnClick"
         />
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <Button
+            android:id="@+id/btnAudioPlay"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="audioPlay"
+            android:onClick="onAudioBtnClick"
+            />
+        <Button
+            android:id="@+id/btnAudioPause"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="audioPause"
+            android:onClick="onAudioBtnClick"
+            />
+        <Button
+            android:id="@+id/btnAudioStop"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="audioStop"
+            android:onClick="onAudioBtnClick"
+            />
+    </LinearLayout>
+
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="wrap_content"

@@ -14,8 +14,10 @@ import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
+import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Build;
+import android.os.Environment;
 import android.provider.DocumentsContract;
 import android.provider.MediaStore;
 import android.provider.Settings;
@@ -43,8 +45,11 @@ public class MainActivity extends AppCompatActivity {
     public static int notifyID = 1;
     public static final int TAKE_PHOTO = 1;
     public static final int CHOOSE_PHOTO = 2;
+    public static final int IMAGE_KEY = 1;
+    public static final int AUDIO_KEY = 2;
     private ImageView imageView;
     private Uri imageUri;
+    private MediaPlayer mediaPlayer = new MediaPlayer();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,6 +58,12 @@ public class MainActivity extends AppCompatActivity {
 
         imageView = (ImageView) findViewById(R.id.imageView);
         imageView.setImageResource(R.mipmap.ic_launcher);
+
+        if (ContextCompat.checkSelfPermission(MainActivity.this, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(MainActivity.this, new String[]{ Manifest.permission. WRITE_EXTERNAL_STORAGE }, AUDIO_KEY);
+        } else {
+            initMediaPlayer(); // 初始化MediaPlayer
+        }
     }
 
     public void onBtnClick(View view){
@@ -109,7 +120,7 @@ public class MainActivity extends AppCompatActivity {
             case R.id.btnAlbum:
             {
                 if (ContextCompat.checkSelfPermission(MainActivity.this, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
-                    ActivityCompat.requestPermissions(MainActivity.this, new String[]{ Manifest.permission. WRITE_EXTERNAL_STORAGE }, 1);
+                    ActivityCompat.requestPermissions(MainActivity.this, new String[]{ Manifest.permission. WRITE_EXTERNAL_STORAGE }, IMAGE_KEY);
                 } else {
                     openAlbum();
                 }
@@ -123,7 +134,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         switch (requestCode){
-            case 1:
+            case IMAGE_KEY:
             {
                 if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED)
                 {
@@ -133,6 +144,14 @@ public class MainActivity extends AppCompatActivity {
                     Toast.makeText(this, "YOU Denied this permission", Toast.LENGTH_SHORT).show();
                 }
             }
+                break;
+            case AUDIO_KEY:
+                if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                    initMediaPlayer();
+                } else {
+                    Toast.makeText(this, "拒绝权限将无法使用程序", Toast.LENGTH_SHORT).show();
+                    finish();
+                }
                 break;
             default:
                 break;
@@ -231,6 +250,43 @@ public class MainActivity extends AppCompatActivity {
             imageView.setImageBitmap(bitmap);
         } else {
             Toast.makeText(this, "failed to get image", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    // 音频
+    private void initMediaPlayer() {
+        try {
+            File file = new File(Environment.getExternalStorageDirectory(), "xtx.mp3");
+            mediaPlayer.setDataSource(file.getPath()); // 指定音频文件的路径
+            mediaPlayer.prepare(); // 让MediaPlayer进入到准备状态
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+
+    // 音频按钮
+    public void onAudioBtnClick(View view){
+
+        switch (view.getId()){
+            case R.id.btnAudioPlay:
+            {
+                this.initMediaPlayer();
+                mediaPlayer.start(); // 开始播放
+            }
+            break;
+            case R.id.btnAudioPause:
+            {
+                mediaPlayer.pause(); // 暂停播放
+            }
+            break;
+            case R.id.btnAudioStop:
+            {
+                mediaPlayer.stop(); // 停止播放
+            }
+            break;
+            default:
+                break;
         }
     }
 }
